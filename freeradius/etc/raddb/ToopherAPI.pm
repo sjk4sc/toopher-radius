@@ -38,6 +38,14 @@ sub new
   my $api_url = $args{'api_url'} ? $args{'api_url'} : DEFAULT_TOOPHER_API;
 
   my $ua = $args{'ua'} ? $args{'ua'} : LWP::UserAgent->new();
+
+  my $proxy = $args{'proxy'}
+  if ($proxy) {
+    $ua->proxy(['http','https'], $proxy);
+  } else {
+    $ua->env_proxy;
+  }
+
   my $self = {
     _api_url => $api_url,
     _ua => $ua,
