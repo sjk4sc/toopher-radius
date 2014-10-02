@@ -62,7 +62,7 @@ fi
 echo Installing/Updating CPAN modules.  Some modules might take several attempts.
 # install needed CPAN modules.  This can still fail for unknown reasons, so
 # grep for failure messages and retry for each module
-CPAN_MODULES=( Net::OAuth::ConsumerRequest JSON::XS JSON LWP::Protocol::https Try::Tiny URL::Encode URI::Escape Digest::SHA )
+CPAN_MODULES=( Net::OAuth::ConsumerRequest JSON::XS JSON LWP::Protocol::https Try::Tiny URL::Encode URI::Escape Digest::SHA Term::ReadPassword Authen::Radius )
 
 for module in "${CPAN_MODULES[@]}"
 do
