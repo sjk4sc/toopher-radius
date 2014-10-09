@@ -39,9 +39,9 @@ sub new
 
   my $ua = $args{'ua'} ? $args{'ua'} : LWP::UserAgent->new();
 
-  my $proxy = $args{'proxy'}
-  if ($proxy) {
-    $ua->proxy(['http','https'], $proxy);
+  my $proxy_setting = $args{'proxy'};
+  if ($proxy_setting) {
+    $ua->proxy(['http','https'], $proxy_setting);
   } else {
     $ua->env_proxy;
   }
