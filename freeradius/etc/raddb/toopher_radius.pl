@@ -383,7 +383,8 @@ sub instantiate_toopher_api
   
   $api = ToopherAPI->new(key=>$config->{'toopher_api'}{'key'},
                           secret=>$config->{'toopher_api'}{'secret'},
-                          api_url=>$config->{'toopher_api'}{'url'});
+                          api_url=>$config->{'toopher_api'}{'url'},
+                          proxy=>$config->{'toopher_api'}{'proxy'});
 }
 
 if($ARGV[0] eq 'unittest'){
