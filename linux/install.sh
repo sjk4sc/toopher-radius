@@ -66,10 +66,15 @@ CPAN_MODULES=( Net::OAuth::ConsumerRequest JSON::XS JSON LWP::Protocol::https Tr
 
 for module in "${CPAN_MODULES[@]}"
 do
-  ./cpanm $module 2>&1
+  if [ "$module" = "Term::ReadPassword" ]
+  then
+    ./cpanm --notest $module 2>&1
+  else
+    ./cpanm $module 2>&1
+  fi
 done
 
-CONFIG_FILES=( clients.conf ToopherAPI.pm toopher_users dictionary.toopher toopher_radius.pl toopher_radius_config.pm modules/files modules/perl modules/ldap sites-available/default ldap.attrmap )
+CONFIG_FILES=( clients.conf ToopherAPI.pm toopher_users dictionary.toopher toopher_radius.pl toopher_radius_config.pm modules/files modules/perl modules/ldap sites-available/default ldap.attrmap pap_challenge_request.pl )
 
 if [ -e $RADDB_DIR/toopher_radius_config.pm ]; then
   cp $RADDB_DIR/clients.conf $TEMP_DIR/raddb/clients.conf
